@@ -1,0 +1,42 @@
+\documentclass{report}
+
+\input{Config}
+
+\begin{document}\thispagestyle{empty}
+
+%-----------------------------------------------
+%	PROJECT INFORMATION
+%-----------------------------------------------
+
+\def \institution{Aarhus University}
+\def \subject{Deep Learning}
+\def \title {Project}
+\def \author{Student \\ (Student number)}
+\def \supervisor{Supervisor}
+
+%-----------------------------------------------
+%	PRE-CONTENT
+%-----------------------------------------------
+
+\include{Pre-content/Title-page-std}
+%\include{Pre-content/Abstract}
+\include{Pre-content/Contents}
+
+%-----------------------------------------------
+%	CHAPTERS
+%-----------------------------------------------
+
+\pagenumbering{arabic}
+\include{Chapters/Introduction/Introduction}
+\include{Chapters/Exercise1/Exercise1}
+\include{Chapters/Exercise2/Exercise2}
+\include{Chapters/Project/Project}
+
+%-----------------------------------------------
+%	POST-CONTENT
+%-----------------------------------------------
+
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+
+\end{document}
