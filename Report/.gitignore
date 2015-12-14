@@ -15,8 +15,6 @@ python/**/*.jpg
 data/**/*.png
 data/**/*.jpg
 data/**/*.mat
-*.jpg
-*.png
 tmp/
 
 ## Intermediate documents:
