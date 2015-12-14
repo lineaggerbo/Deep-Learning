@@ -1,0 +1,37 @@
+%!TEX root = ../../Main.tex
+\graphicspath{{Chapters/Project/}}
+%-------------------------------------------------------------------------------
+
+\section{Convolutional Network architecture} % (fold)
+\label{sec:convolutional_network_architecture}
+
+A convolutional neural network exists of a number of different layers with different properties. The different layers used in the networks in this project are described in this section. 
+
+\subsection{Convolutional layers} % (fold)
+\label{sub:conv_layers}
+
+The convolutional layers are often the first layers in the network.
+
+Der skal nok skrives lidt om her ..
+
+The rectified Linear Unit (ReLU) is one of many activation function to choose among. The ReLU activation function is the most common activation function in the lower layers of convolutional neural netorks. Other activation functions could be the Sigmoid or the Tanh activation functions.
+
+The ReLU differs from the other mentioned activations function in several ways. First of all it converges faster which results in shorter training time. Second of all the ReLU activation function do not saturate which avoids the problem about the gradient getting killed which would lead to the case where the network stops learning during the training (HENVIS TIL MATERIALE OM AKTIVERINGS FUNKTIONER). This problem is known from the use of the other activation functions. 
+
+The formula for the ReLU activation function is $f(x)=max(0,x)$ and is illustrated in FIGURE..
+
+INDSÆT FIGUR
+
+% subsection conv_layers (end)
+
+\subsection{Pooling layers} % (fold)
+\label{sub:pool_layers}
+
+% subsection pool_layers (end)
+
+\subsection{Fully-Connected Layers} % (fold)
+\label{sub:fc_layers}
+
+% subsection fc_layers (end)
+
+% section convolutional_network_architecture (end)
