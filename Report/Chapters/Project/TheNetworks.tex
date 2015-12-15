@@ -5,8 +5,23 @@
 \section{The networks} % (fold)
 \label{sec:the_networks}
 
+The network from the tutorial described earlier in this report is reffered to as the original network. The orther networks which are tried out in this project is based on this network with some changes in the architecture. All networks are described in this section.
+
 \subsection{The original network} % (fold)
 \label{sub:the_original_network}
+
+The original network is a six layer network. The network consists of three convolutional layers and three fully connected layers. The layers are as following
+
+\begin{itemize}
+  \item The first layer consists of a convolution with a kernel size of five, a stride of one and a padding of two. The activation function is the ReLU. It also consists of max pooling with a kernel size of three and a stride of two. 
+  \item The second layer consists of the same three parts with the same values of strides and kernel sizes.
+  \item The third layer also consists of three parts. The convolutional part and the ReLU is the same as in the earlier layers. But instead of using max pooling, average pooling is used.
+  \item The fourth layer is a normal fully connected layer.
+  \item The fifth layer is also a normal fully connected layer.
+  \item The sixth layer is a fully coonected softmax layer.
+\end{itemize}
+
+\autoref{sec:the_networks}}
 
 Beskrivelse af arkitekturen og implementationsfilerne
 
