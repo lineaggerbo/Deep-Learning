@@ -30,27 +30,41 @@ follows:
 	\item The fifth layer is also a normal fully connected layer.
 	\item The sixth layer is a fully coonected Softmax layer.
 \end{enumerate}
-For a detailed description of each type of layer see
+For a detailed description of each type/part of the layers see
 \autoref{sec:convolutional_network_architecture}.
 
+The initial network architecture file called:
+\verb|cifar10__quick_traintest.prototx| can be found in the examples folder
+under cifar10 in Caffe\cite{caffe}. This file has been used as a starting point
+for all our networks which are explaind later in this section. 
 
-Beskrivelse af arkitekturen og implementationsfilerne:
+For running the network on a dataset it is also necessary to edit the
+configuration file: \verb|cifar10_quick_solver.prototxt| which can be found in
+the same folder as the network architecture file. In this file a number of
+hyperparameters for the network are specified such as the number of iterations
+(epochs) and the value of the momentum parameter. The hyberparameters influence
+on the convolution networks are described in \autoref{sec:training_and_testing}.
 
-Network architecture configuration file: \verb|cifar10__quick_traintest.prototx|
-for Caffe.
+
+The only hyperparameter changed in the different networks is the number of
+iterations (epochs). 1 epoch is specified as when all images in a dataset has
+been through the entire network once. In Caffe the number of epochs are
+specified as interations where 4000 iterations is equivalent to 8 epochs. In
+our networks the number of iterations used is 4000 and/or 8000 (8 and/or 16
+epochs). The initial network were trained with both 4000 and 8000 iterations in
+order to see the performance difference.  
 
 
 \subsubsection{Results}
-Beskrivelse af resultaterne
 
 
 Test result with 4000 iterations:
 
-Accuracy: 0.7164 
+Accuracy: 0.7164 / 0.7227
 
 Test result with 8000 iterations:
 
-Accuracy: 0.7191 
+Accuracy: 0.7191 /
 
 
 
@@ -59,16 +73,57 @@ Accuracy: 0.7191
 \label{sub:alexNet}
 
 We have tried to mimic the architecture of AlexNet\cite{AlexNet} in order to
-test its performance on the CIFAR-10 dataset. 
+test its performance on the CIFAR-10 dataset. The original AlexNet consists of 8
+layers and are using delineation of responsibilities between two GPUs. Since we
+did not have multiple GPUs avaliable we focused on designing the network for a
+single GPU as in \cite{ZeilerFergus}. 
+
+AlexNet was trained, validated and tested on the ImageNet dataset which contain
+much larger images than the CIFAR-10 dataset. This meant that we had to change
+the kernel size, the stride and the pooling in order for our network to be
+compatible with the CIFAR-10 images. 
 
 
-AlexNet: (8 layers, 7 hidden layers) \\
- Conv, Max pool | Conv, Max pool | Conv | Conv | Conv, Max pool |
-Fully con. | Fully con. | Fully con. (output) 
+Our AlexNet configuration for Caffe is a 8 layer network with five convolutional
+layers and three fully connected layers. The layers are as follows:
+\begin{enumerate}
+	\item The first layer consists of a convolution with a kernel size of five, a
+	stride of one and a padding of two. The activation function is ReLU and last in
+	the layer max pooling is applied with a kernel size of three and a stride of
+	two. 
+	\item The second layer is equivalent to the first layer 
+	\item The third layer is also equivalent to the first layer but without any
+	pooling in it. 
+	\item The fourth layer is equivalent to the third layer 
+	\item The fifth layer is equivalent to the first layer with max pooling  
+	\item The sixth layer is a normal fully connected layer
+	\item The seventh layer is also a normal fully connected layer
+	\item The eight layer is a fully coonected Softmax layer
+\end{enumerate}
 
-Difference from Original AlexNet is\ldots
+For a detailed description of each type/part of the layers see
+\autoref{sec:convolutional_network_architecture}. 
+
+
+The differences from the original AlexNet is the change in kernel size for both
+convolution and for max pooling which is scaled down to fit the smaller
+images in CIFAR-10. Also the stride is minimized to one in the convolutions but
+not in the max pooling. Another argument for changing the value to smaller
+numbers besides fitting the network to the dataset is as explained in
+\cite{ZeilerFergus} where Zeiler and Fergus conclude that ``the overall depth of
+the model is important for obtaining good performance''.  Zeiler and
+Fergus\cite{ZeilerFergus} reduce the size of the kernel size from 11 to 7 and
+the stride from 4 to 2 in the first layer and their reduction in the first layer
+allows the network to retain more information which improved their overall
+performance. 
+
+[// TODO: Maaske mere her.. ]
 
 Beskrivelse af arkitekturen og implementationsfilerne
+
+
+
+
 
 \subsubsection{Results}
 Beskrivelse af resultaterne
