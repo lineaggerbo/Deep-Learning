@@ -10,7 +10,7 @@ as the initial network. The orther networks which are tried out in this
 project is based on this network with some changes in the architecture. All
 networks are described in this section.
 
-\subsection{The initial network} % (fold)
+\subsection{The initial CNN} % (fold)
 \label{sub:the_initial_network}
 
 The initial network is a six layer network. The network consists of three
@@ -55,16 +55,14 @@ epochs). The initial network were trained with both 4000 and 8000 iterations in
 order to see the performance difference.  
 
 
-\subsubsection{Results}
+\subsubsection{Result}
 
+The results for the initial network using 4000 and 8000 iterations for training
+is as follows: 
 
-Test result with 4000 iterations:
+Test result with 4000 iterations (8 epochs) achive the best accuracy on 0.7227.   
 
-Accuracy: 0.7164 / 0.7227
-
-Test result with 8000 iterations:
-
-Accuracy: 0.7191 /
+Test result with 8000 iterations (16 epochs) achive an accuracy on 0.7191. 
 
 
 
@@ -72,8 +70,8 @@ Accuracy: 0.7191 /
 \subsection{Customized AlexNet} % (fold)
 \label{sub:alexNet}
 
-We have tried to mimic the architecture of AlexNet\cite{AlexNet} in order to
-test its performance on the CIFAR-10 dataset. The original AlexNet consists of 8
+We have tried to mimic the architecture of AlexNet\cite{AlexNet} in order
+to test its performance on the CIFAR-10 dataset. The original AlexNet consists of 8
 layers and are using delineation of responsibilities between two GPUs. Since we
 did not have multiple GPUs avaliable we focused on designing the network for a
 single GPU as in \cite{ZeilerFergus}. 
@@ -117,29 +115,40 @@ the stride from 4 to 2 in the first layer and their reduction in the first layer
 allows the network to retain more information which improved their overall
 performance. 
 
-[// TODO: Maaske mere her.. ]
+
+Our hypophysis was that by introducing more layers into the network compared to
+the initial network would improve the performance and thereby increase the
+accuracy.
+
+
+\subsubsection{Result}
+
+The result for our AlexNet using 8000 iterations for training on the CIFAR-10
+dataset is as follows: 
+
+Test result with 8000 iterations (16 epochs) achive an accuracy on 0.6992. 
+
+
+% subsection another_network (end)
+\subsection{CNN with additional convolution layer} % (fold)
+\label{sub:cnn}
+
+
+Additional conv 4 layer u. max pool
+
+
 
 Beskrivelse af arkitekturen og implementationsfilerne
 
-
-
-
+Beskrivelse af resultaterne
 
 \subsubsection{Results}
-Beskrivelse af resultaterne
 
-Test result with 8000 iterations:
+The result for our CNN using 4000 iterations for training on the CIFAR-10
+dataset is as follows: 
 
-Accuracy: 0.6992
+Test result with 4000 iterations (8 epochs) achive an accuracy on 	0.7186.
 
 
-% subsection another_network (end)
-\subsection{Another network} % (fold)
-\label{sub:another_network}
-
-Beskrivelse af arkitekturen og implementationsfilerne
-
-Beskrivelse af resultaterne
-
-% subsection another_network (end)
+% subsection cnn (end)
 % section the_networks (end)
