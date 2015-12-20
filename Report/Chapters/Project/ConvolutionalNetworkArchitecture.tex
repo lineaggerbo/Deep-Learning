@@ -28,16 +28,20 @@ INDSÆT FIGUR
 \subsection{Pooling layers} % (fold)
 \label{sub:pool_layers}
 
-Pooling layers are common in-between successive convolutional layers. The primary purpose of introducing pooling layers is to reduce the spatial dimensions of a volume thus alleviating computations needed when training the network. This parameter reduction is achieved by performing a downsampling. Different downsampling strategies exists, e.g. max pooling, average pooling and L2 pooling. 
+Pooling layers are common in-between successive convolutional layers. The primary purpose of introducing pooling layers is to reduce the spatial dimensions of a volume hence alleviating computations needed when training the network. This essentially means that the number of parameters in the network decreases. Thus pooling layers also contribute to control overfitting.
 
-more fun to come\ldots
+Parameter reduction is achieved by performing downsampling. This is done by applying filters along the spatial dimension of a volume effectively discarding many of the activations. The filter size, or spatial extend $F$, and stride $S$ are hyperparameters that has to be chosen at time the model is being constructed. As stated in \cite{cs231n} most commonly seen pooling layers are either non-overlapping with $F=2, S=2$ or overlapping with $F=3, S=2$.
 
-overfitting..
+Various downsampling strategies exists. The ones that are of interest in this project are max and average pooling. Historically average pooling has been used however recently max pooling has shown to perform better in practice. To understand the intuition of this one might consider this rough analogy: Say a city has four districts and you know whether or not it rains in each district. When you are asked if it rains in the city, you would look at each district and if it rains in any of these, it rains in the city. This process resembles max pooling. You would probably not count the raining cities and divide by 4 as average pooling proposes. 
+
+We can transfer this analogy to our ConvNet. If a feature is detected in a small region it is less likely to appear multiple times. Calculating the mean of this region would result in a value that is lower than the actual value. In that sense average pooling is not ideal.
 
 % subsection pool_layers (end)
 
 \subsection{Fully-Connected Layers} % (fold)
 \label{sub:fc_layers}
+
+Softmax\ldots
 
 % subsection fc_layers (end)
 
