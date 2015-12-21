@@ -5,17 +5,101 @@
 \section{Caffe} % (fold)
 \label{sec:caffe}
 
-Convolutional Architecture for Fast Feature Embedding (Caffe) is a public available framework which makes it possible to design, train and use a convolutional in a rather simple way. The source code is available online and the team behind the framework encourage other people to note or change any errors which they might find. The framework allows you to choose to use either the CPU or the GPU for calculations. In this project the CPU is used.
+Convolutional Architecture for Fast Feature Embedding (Caffe) is a public available framework which makes it possible to design, train and use a convolutional network in a rather simple way. The source code is available online and the team behind the framework encourage other people to note or change any errors which they might find. The framework allows you to choose to use either the CPU or the GPU for calculations. In this project the CPU is used.
 
+In order to use Caffe for image classification three files are needed - a .prototxt file, a \_solver.prototxt file and a .sh file. These three files together defines the architecture of the network, the hyperparameters and the training and testing strategy.
 
+The .prototxt file defines the architecture of the model e.g. the number and types of layers. An example of a defined layer is shown in \autoref{lst:conv1layer}. The layer exists of three layers - the convolutional layer, the pooling layer and the relu layer. The properties of the different type of layers is described in \autoref{sec:convolutional_network_architecture}.
 
-In order to use Caffe for image classification three files are needed - a .prototxt file, a \_solver.prototxt file and a .caffemodel file. These three files together defines the architecture of the network, the hyperparameters and the training and testing strategy.
+The three layers are defined with a name, a type, the input (bottom) and the output (top). Some layers has a number of parameters (convolution\_param and pooling\_param) which sets some hyperparameters for the layer.
 
-The .caffemodel file defines the architecture of the model e.g. the number and types of layers. An example of a defined layer is shown in
+\begin{lstlisting}[caption = A code snippet from the file  cifar10\_quick\_train\_test.prototxt from the Cifar-10 tutorial provided by the framework. This code snippet defines the first convolutional layer in the network., label={lst:conv1layer}]
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 32
+    pad: 3
+    kernel_size: 7
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.0001
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "relu1"
+  type: "ReLU"
+  bottom: "pool1"
+  top: "pool1"
+}
+\end{lstlisting}
 
-The .prototxt file defines ...
+The \_solver.prototxt file defines how the network is trained. An example of this file is shown in \autoref{lst:solver_prototxt_file}. This file sets the file path for the network to be trained and how often and with how many iterations a test of the network should be carried out.
 
-The \_solver.prototxt file defines ...
+The file also sets the hyperparameters fro the training such as the learning rate, the momentum, the weight decay and how many iterations and thereby epochs the training should be carried out in. The setting of whether the training should use the GPU or the CPU is also set in this file. From this file it is also possible to set a snapshot file path where the framework can save a snapshot (from a state under the training).
 
+\begin{lstlisting}[caption = The code from the cifar10\_quick\_solver.prototxt from  the Cifar-10 tutorial provided by the framework. This file defines the hyperparameters for the training of the network., label={lst:solver_prototxt_file}]
+# reduce the learning rate after 8 epochs (4000 iters) by a factor of 10
+# The train/test net protocol buffer definition
+net: "examples/cifar10/cifar10_quick_train_test.prototxt"
+# test_iter specifies how many forward passes the test should carry out.
+# In the case of MNIST, we have test batch size 100 and 100 test iterations,
+# covering the full 10,000 testing images.
+test_iter: 100
+# Carry out testing every 500 training iterations.
+test_interval: 500
+# The base learning rate, momentum and the weight decay of the network.
+base_lr: 0.001
+momentum: 0.9
+weight_decay: 0.004
+# The learning rate policy
+lr_policy: "fixed"
+# Display every 100 iterations
+display: 100
+# The maximum number of iterations
+max_iter: 4000
+# snapshot intermediate results
+snapshot: 0
+snapshot_prefix: "examples/cifar10/cifar10_quick"
+# solver mode: CPU or GPU
+solver_mode: CPU
+\end{lstlisting}
+
+The .sh file is the executable file which is run to start training. This file contains a few lines which yields which \_solver.prototxt file should be used to train. An example of such a file can be seen in \autoref{lst:train_quick_file}.
+
+\begin{lstlisting}[caption = The code from the train\_quick.sh file from  the Cifar-10 tutorial provided by the framework. This file is executable and yields which \_solver.prototxt file to us to start training., label={lst:train_quick_file}]
+#!/usr/bin/env sh
+
+TOOLS=./build/tools
+
+\$TOOLS/caffe train \
+  --solver=examples/cifar10/cifar10_quick_solver.prototxt
+\end{lstlisting}
+
+The result of the training is a .caffemodel file which contains the parameters of the trained network. This file can be used to classify new images.
 
 % section caffe (end)
