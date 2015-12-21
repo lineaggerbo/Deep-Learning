@@ -27,11 +27,11 @@ As a rule of thumb it is recommended to use small filters ($F=3 \vee F=5$), a sm
 \subsection{ReLU layers} % (fold)
 \label{sub:relu_layers}
 
-Activation maps are often followed by an element wise activation function. The Rectified Linear Unit (ReLU) is one of many activation function to choose among and are of special interest in this project. The ReLU activation function is the most common activation function in the lower layers of convolutional neural netorks. Other activation functions could be the Sigmoid or the Tanh activation functions.
+Activation maps are often followed by an element-wise activation function. The Rectified Linear Unit (ReLU) is one of many activation function to choose among and are of special interest in this project. The ReLU activation function is the most common activation function in the lower layers of convolutional neural netorks. Other activation functions could be the Sigmoid or the Tanh activation functions.
 
 The ReLU differs from the other mentioned activations function in several ways. First of all it converges faster which results in shorter training time. Secondly, the ReLU activation function do not saturate which avoids the problem about the gradient getting killed which would lead to the case where the network stops learning during the training \cite{cs231n}. This problem is known from the use of the other activation functions. 
 
-The formula for the ReLU activation function is $f(x)=max(0,x)$ and is illustrated in the figure \ref{fig:relu}
+The formula for the ReLU activation function is $f(x)=max(0,x)$ and is illustrated in the figure \ref{fig:relu}.
 
 \begin{figure}
   \centering
@@ -58,9 +58,15 @@ We can transfer this analogy to our ConvNet. If a feature is detected in a small
 \subsection{Fully-Connected Layers} % (fold)
 \label{sub:fc_layers}
 
-Computes class scores
-Each neuron in this layer will be connected to all the numbers in the previous volue.
-Softmax\ldots
+Having several convolutional layers, relu layers and pooling layers at some point it is time for the high-level reasoning. A fully connected layer consist of neurons each being connected to all activations in the previous volume. Fully connected layers will transform the features into a space that is easier to classify. i.e. compute the class scores. 
+
+This project is restricted to the softmax classifier only, however different classifiers exists among these the popular Support Vector Machines (SVM).
+
+The Softmax classifier gets its name from the softmax function which squeeze the raw class scores into values from 0 to 1 which sums to 1. This allows the cross-entropy loss to be applied. The cross-entropy loss takes the form:
+
+$$ L_i = -log\left(\frac{e^{f_{y_i}}}{\sum_{j}{e^{f_j}}}\right)$$
+
+When a convolutional network is said to be trained a loss function is essentially being minimized. This function/objective is comprised of two parts namely the data loss and regularization loss. The data loss part is the mean of $L_i$ over all training examples. The regularization loss part is present in order to prevent overfitting. Further explanation of regularization is considered out of scope of this project.
 
 % subsection fc_layers (end)
 
