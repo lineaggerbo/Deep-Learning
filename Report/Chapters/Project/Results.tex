@@ -9,6 +9,11 @@ The results from our three different CNN's are shown in
 \autoref{table:table_results} by the means of accuracy on the test dataset from
 CIFAR-10. 
 
+The accuracy for the initial CNN is the best result that we could obtain
+compared to our CNN with an additional convolution layer and our customized
+AlexNet. This conflicts with our hypophysis and will be further discussed in
+\autoref{sec:discussion}.
+
 \vspace{3 mm} % add some space above the table
 \begin{table}[H]
 \centering
@@ -19,12 +24,16 @@ CIFAR-10.
 Name 					& 4000 iterations		& 8000 iterations	\\
 \midrule 
 The initial CNN 		& 0.7227				& 0.7191			\\ 
+CNN + conv. layer		& 0.7186				& --				\\ 
 Customized AlexNet		& -- 					& 0.6992	 		\\ 
-CNN + add. conv. layer	& 0.7186				& --				\\ 
 \bottomrule 
 \end{tabular}
-\caption[Short caption]{Results - The accuracy of our CNN}
+\caption[Short caption]{Results - The accuracy of our CNN's}
 \label{table:table_results}
 \end{table}
+
+
+
+
 
 % section results (end)

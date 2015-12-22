@@ -5,15 +5,15 @@
 \section{Networks} % (fold)
 \label{sec:networks}
 
-The network from the tutorial described earlier in this report is reffered to
-as the initial network. The orther networks which are tried out in this
+The network from the tutorial described earlier in this report is referred to
+as the initial network. The other networks which are tried out in this
 project is based on this network with some changes in the architecture. All
 networks are described in this section.
 
 \subsection{The initial CNN} % (fold)
 \label{sub:the_initial_network}
 
-The initial network is a six layer network. The network consists of three
+The initial network is a six-layer network. The network consists of three
 convolutional layers and three fully connected layers. The layers are as
 follows:
 
@@ -28,7 +28,7 @@ follows:
 	pooling, average pooling is used.
 	\item The fourth layer is a normal fully connected layer.
 	\item The fifth layer is also a normal fully connected layer.
-	\item The sixth layer is a fully coonected Softmax layer.
+	\item The sixth layer is a fully connected Softmax layer.
 \end{enumerate}
 For a detailed description of each type/part of the layers see
 \autoref{sec:convolutional_network_architecture}.
@@ -36,7 +36,7 @@ For a detailed description of each type/part of the layers see
 The initial network architecture file called:
 \verb|cifar10__quick_traintest.prototx| can be found in the examples folder
 under cifar10 in Caffe\cite{caffe}. This file has been used as a starting point
-for all our networks which are explaind later in this section. 
+for all our networks which are explained later in this section. 
 
 For running the network on a dataset it is also necessary to edit the
 configuration file: \verb|cifar10_quick_solver.prototxt| which can be found in
@@ -49,7 +49,7 @@ on the convolution networks are described in \autoref{sec:training_and_testing}.
 The only hyperparameter changed in the different networks is the number of
 iterations (epochs). 1 epoch is specified as when all images in a dataset has
 been through the entire network once. In Caffe the number of epochs are
-specified as interations where 4000 iterations is equivalent to 8 epochs. In
+specified as iterations where 4000 iterations is equivalent to 8 epochs. In
 our networks the number of iterations used is 4000 and/or 8000 (8 and/or 16
 epochs). The initial network were trained with both 4000 and 8000 iterations in
 order to see the performance difference.  
@@ -60,9 +60,9 @@ order to see the performance difference.
 The results for the initial network using 4000 and 8000 iterations for training
 is as follows: 
 
-Test result with 4000 iterations (8 epochs) achived the best accuracy on 0.7227.   
+Test result with 4000 iterations (8 epochs) achieved the best accuracy on 0.7227.   
 
-Test result with 8000 iterations (16 epochs) achived an accuracy on 0.7191. 
+Test result with 8000 iterations (16 epochs) achieved an accuracy on 0.7191. 
 
 
 
@@ -78,7 +78,9 @@ The activation function for this conv. layer is also the Rectified Linear Unit
 (ReLU). 
 
 Our hypophysis was that by adding an additional convolution layer we could
-increase the performance. 
+increase the performance. This is based on the article by Zeiler and
+Fergus\cite{ZeilerFergus} where the overall depth of the convolutional neural
+network is considered as an important factor for the performance of the CNN. 
 
 
 \subsubsection{Result}
@@ -86,7 +88,7 @@ increase the performance.
 The result for our CNN using 4000 iterations for training on the CIFAR-10
 dataset is as follows: 
 
-Test result with 4000 iterations (8 epochs) achived an accuracy on	0.7186.
+Test result with 4000 iterations (8 epochs) achieved an accuracy on	0.7186.
 
 
 % subsection cnn (end)
@@ -96,7 +98,7 @@ Test result with 4000 iterations (8 epochs) achived an accuracy on	0.7186.
 We have tried to mimic the architecture of AlexNet\cite{AlexNet} in order
 to test its performance on the CIFAR-10 dataset. The original AlexNet consists of 8
 layers and are using delineation of responsibilities between two GPUs. Since we
-did not have multiple GPUs avaliable we focused on designing the network for a
+did not have multiple GPUs available we focused on designing the network for a
 single GPU as in \cite{ZeilerFergus}. 
 
 AlexNet was trained, validated and tested on the ImageNet dataset which contain
@@ -119,7 +121,7 @@ layers and three fully connected layers. The layers are as follows:
 	\item The fifth layer is equivalent to the first layer with max pooling  
 	\item The sixth layer is a normal fully connected layer
 	\item The seventh layer is also a normal fully connected layer
-	\item The eight layer is a fully coonected Softmax layer
+	\item The eight layer is a fully connected Softmax layer
 \end{enumerate}
 
 For a detailed description of each type/part of the layers see
@@ -132,7 +134,7 @@ images in CIFAR-10. Also the stride is minimized to one in the convolutions but
 not in the max pooling. Another argument for changing the value to smaller
 numbers besides fitting the network to the dataset is as explained in
 \cite{ZeilerFergus} where Zeiler and Fergus conclude that ``the overall depth of
-the model is important for obtaining good performance''.  Zeiler and
+the model is important for obtaining good performance''. Zeiler and
 Fergus\cite{ZeilerFergus} reduce the size of the kernel size from 11 to 7 and
 the stride from 4 to 2 in the first layer and their reduction in the first layer
 allows the network to retain more information which improved their overall
@@ -149,7 +151,7 @@ accuracy.
 The result for our AlexNet using 8000 iterations for training on the CIFAR-10
 dataset is as follows: 
 
-Test result with 8000 iterations (16 epochs) achived an accuracy on 0.6992. 
+Test result with 8000 iterations (16 epochs) achieved an accuracy on 0.6992. 
 
 
 % subsection another_network (end)
