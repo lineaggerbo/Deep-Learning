@@ -60,13 +60,36 @@ order to see the performance difference.
 The results for the initial network using 4000 and 8000 iterations for training
 is as follows: 
 
-Test result with 4000 iterations (8 epochs) achive the best accuracy on 0.7227.   
+Test result with 4000 iterations (8 epochs) achived the best accuracy on 0.7227.   
 
-Test result with 8000 iterations (16 epochs) achive an accuracy on 0.7191. 
+Test result with 8000 iterations (16 epochs) achived an accuracy on 0.7191. 
 
 
 
 % subsection the_original_network (end)
+\subsection{CNN with additional convolution layer} % (fold)
+\label{sub:cnn}
+
+This network is based on the network in the previous
+\autoref{sub:the_initial_network} - The initial CNN. The network adds another
+convolution layer to the initial CNN as a new layer between layer 3 and 4. The
+new conv. layer has a kernel size of five, a stride of one and a padding of two.
+The activation function for this conv. layer is also the Rectified Linear Unit
+(ReLU). 
+
+Our hypophysis was that by adding an additional convolution layer we could
+increase the performance. 
+
+
+\subsubsection{Result}
+
+The result for our CNN using 4000 iterations for training on the CIFAR-10
+dataset is as follows: 
+
+Test result with 4000 iterations (8 epochs) achived an accuracy on	0.7186.
+
+
+% subsection cnn (end)
 \subsection{Customized AlexNet} % (fold)
 \label{sub:alexNet}
 
@@ -126,29 +149,8 @@ accuracy.
 The result for our AlexNet using 8000 iterations for training on the CIFAR-10
 dataset is as follows: 
 
-Test result with 8000 iterations (16 epochs) achive an accuracy on 0.6992. 
+Test result with 8000 iterations (16 epochs) achived an accuracy on 0.6992. 
 
 
 % subsection another_network (end)
-\subsection{CNN with additional convolution layer} % (fold)
-\label{sub:cnn}
-
-
-Additional conv 4 layer u. max pool
-
-
-
-Beskrivelse af arkitekturen og implementationsfilerne
-
-Beskrivelse af resultaterne
-
-\subsubsection{Results}
-
-The result for our CNN using 4000 iterations for training on the CIFAR-10
-dataset is as follows: 
-
-Test result with 4000 iterations (8 epochs) achive an accuracy on 	0.7186.
-
-
-% subsection cnn (end)
 % section the_networks (end)
