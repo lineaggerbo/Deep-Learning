@@ -60,7 +60,8 @@ layer {
 
 The \_solver.prototxt file defines how the network is trained. An example of this file is shown in \autoref{lst:solver_prototxt_file}. This file sets the file path for the network to be trained and how often and with how many iterations a test of the network should be carried out.
 
-The file also sets the hyperparameters fro the training such as the learning rate, the momentum, the weight decay and how many iterations and thereby epochs the training should be carried out in. The setting of whether the training should use the GPU or the CPU is also set in this file. From this file it is also possible to set a snapshot file path where the framework can save a snapshot (from a state under the training).
+The file also sets the hyperparameters for the training such as the learning
+rate, the momentum, the weight decay and how many iterations and thereby epochs the training should be carried out in. The setting of whether the training should use the GPU or the CPU is also set in this file. From this file it is also possible to set a snapshot file path where the framework can save a snapshot (from a state under the training).
 
 \begin{lstlisting}[caption = The code from the cifar10\_quick\_solver.prototxt from  the Cifar-10 tutorial provided by the framework. This file defines the hyperparameters for the training of the network., label={lst:solver_prototxt_file}]
 # reduce the learning rate after 8 epochs (4000 iters) by a factor of 10
