@@ -34,25 +34,27 @@ For a detailed description of each type/part of the layers see
 \autoref{sec:convolutional_network_architecture}.
 
 The initial network architecture file called:
-\verb|cifar10__quick_traintest.prototx| can be found in the examples folder
+\verb|cifar10__quick_traintest.prototx| it can be found in the examples folder
 under cifar10 in Caffe\cite{caffe}. This file has been used as a starting point
 for all our networks which are explained later in this section. 
 
-For running the network on a dataset it is also necessary to edit the
+In order to running the network on a dataset it is also necessary to edit the
 configuration file: \verb|cifar10_quick_solver.prototxt| which can be found in
 the same folder as the network architecture file. In this file a number of
 hyperparameters for the network are specified such as the number of iterations
 (epochs) and the value of the momentum parameter. The hyberparameters influence
-on the convolution networks are described in \autoref{sec:training_and_testing}.
+on the convolution networks are described in \autoref{sec:training}.
 
 
 The only hyperparameter changed in the different networks is the number of
 iterations (epochs). 1 epoch is specified as when all images in a dataset has
 been through the entire network once. In Caffe the number of epochs are
-specified as iterations where 4000 iterations is equivalent to 8 epochs. In
-our networks the number of iterations used is 4000 and/or 8000 (8 and/or 16
+specified as iterations where 4000 iterations is equivalent to 8 epochs (1
+epoch = 500 iterations).
+In our networks the number of iterations used is 4000 and/or 8000 (8 and/or 16
 epochs). The initial network were trained with both 4000 and 8000 iterations in
-order to see the performance difference.  
+order to see the difference in performance based only on the number of
+iterations.
 
 
 \subsubsection{Result}
