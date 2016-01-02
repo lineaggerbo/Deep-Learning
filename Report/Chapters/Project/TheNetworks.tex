@@ -8,7 +8,7 @@
 The network from the tutorial described earlier in this report is referred to
 as the initial network. The other networks which are tried out in this
 project is based on this network with some changes in the architecture. All
-networks are described in this section.
+networks used on this project are described in this section.
 
 \subsection{The initial CNN} % (fold)
 \label{sub:the_initial_network}
@@ -42,11 +42,11 @@ In order to running the network on a dataset it is also necessary to edit the
 configuration file: \verb|cifar10_quick_solver.prototxt| which can be found in
 the same folder as the network architecture file. In this file a number of
 hyperparameters for the network are specified such as the number of iterations
-(epochs) and the value of the momentum parameter. The hyberparameters influence
+(epochs). The hyberparameters influence
 on the convolution networks are described in \autoref{sec:training}.
 
 
-The only hyperparameter changed in the different networks is the number of
+The only hyperparameter changed in this network is the number of
 iterations (epochs). 1 epoch is specified as when all images in a dataset has
 been through the entire network once. In Caffe the number of epochs are
 specified as iterations where 4000 iterations is equivalent to 8 epochs (1
@@ -59,10 +59,11 @@ iterations.
 
 \subsubsection{Result}
 
-The results for the initial network using 4000 and 8000 iterations for training
+The result for the initial network using 4000 and 8000 iterations for training
 is as follows: 
 
-Test result with 4000 iterations (8 epochs) achieved the best accuracy on 0.7227.   
+Test result with 4000 iterations (8 epochs) achieved the best accuracy on
+0.7227.
 
 Test result with 8000 iterations (16 epochs) achieved an accuracy on 0.7191. 
 
@@ -80,9 +81,10 @@ The activation function for this conv. layer is also the Rectified Linear Unit
 (ReLU). 
 
 Our hypophysis was that by adding an additional convolution layer we could
-increase the performance. This is based on the article by Zeiler and
-Fergus\cite{ZeilerFergus} where the overall depth of the convolutional neural
-network is considered as an important factor for the performance of the CNN. 
+increase the performance as well as the traning time. This was based on the
+article by Zeiler and Fergus\cite{ZeilerFergus} where the overall depth of the
+convolutional neural network is considered as an important factor for the
+performance of a CNN.
 
 
 \subsubsection{Result}
@@ -101,7 +103,7 @@ We have tried to mimic the architecture of AlexNet\cite{AlexNet} in order
 to test its performance on the CIFAR-10 dataset. The original AlexNet consists of 8
 layers and are using delineation of responsibilities between two GPUs. Since we
 did not have multiple GPUs available we focused on designing the network for a
-single GPU as in \cite{ZeilerFergus}. 
+single GPU/CPU as in \cite{ZeilerFergus}. 
 
 AlexNet was trained, validated and tested on the ImageNet dataset which contain
 much larger images than the CIFAR-10 dataset. This meant that we had to change
@@ -144,8 +146,9 @@ performance.
 
 
 Our hypophysis was that by introducing more layers into the network compared to
-the initial network would improve the performance and thereby increase the
-accuracy.
+the initial network and by using principles from Zeiler and
+Fergus\cite{ZeilerFergus} this would improve the performance
+and thereby increase the accuracy.
 
 
 \subsubsection{Result}

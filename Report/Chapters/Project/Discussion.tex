@@ -5,18 +5,20 @@
 \section{Discussion} % (fold)
 \label{sec:discussion}
 
-We have experimented with different configurations in the Caffe framework for convolutional neural
-networks as explained in \autoref{sec:networks}.  
- 
- 
-The accuracy for the initial CNN is the best result that we could obtain despite
-our effort to improve the network based on literature from cs231n \cite{cs231n},
-the AlexNet article\cite{AlexNet} and the article by Zeiler and Fergus
-\cite{ZeilerFergus}.
+We have experimented with different configurations in the Caffe framework for
+convolutional neural networks as explained in \autoref{sec:networks}. These
+experiments resulted in three different networks: The initial CNN, The CNN with
+additional convolution layer and The customized AlexNet. Our hypophysis for our
+networks were to improve the performance by adding layers and mimicking
+a the architecture of a well known CNN. Despite our effort to improve our
+networks based on literature from cs231n \cite{cs231n}, the AlexNet
+article\cite{AlexNet} and the article by Zeiler and Fergus \cite{ZeilerFergus}. 
+The accuracy for the initial CNN on 0.7227 using 4000 iterations is the best
+result that we could obtain in the experiments.
 
 
-- Sammenlign med CIFAR fra exercise 1 Q1, ``Train a network'' 
-- Vores hypoteser holder ikke. 
-
+One of the reasons why our customized AlexNet did not perform as intented could
+be our downscaling on the different parameters in order to be able to use the
+AlexNet architecture on the CIFAR-10 dataset. 
 
 % section discussion (end)

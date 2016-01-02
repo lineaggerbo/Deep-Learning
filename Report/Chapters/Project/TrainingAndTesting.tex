@@ -5,7 +5,9 @@
 \section{Training} % (fold)
 \label{sec:training}
 
-In order for the CNN to lear a model it must be trained. In this section the hyperparameters for the training is described together with some training techniques.
+In order for the CNN to learn a model it must be trained. In this section the
+hyperparameters for the training is described together with some training
+techniques.
 
 \subsection{The training data} % (fold)
 \label{sub:the_training_data}
@@ -14,7 +16,9 @@ When training the network it is important to split the dataset into two or three
 
 The validation set is used to tune the parameters of the network and control overfitting during the training phase. This is done by testing the network on the validation dataset. These test will reveal if the networks starts overfitting the training data which is when the scores from the training dataset and the validation dataset starts differentiating more and more.
 
-The training dataset is the largest of the three datasets. Due to very large training datasets sometimes the use of mini-batches might be used. Mini-batches are subsets of the training data with randomly chosen images. These mini-batches are used to train the network in iterations. When all mini-batches and thereby all images in the training dataset has been used for testing one testing epoch is done.
+The training dataset is the largest of the three datasets. Due to very large
+training datasets sometimes the use of mini-batches might be applied.
+Mini-batches are subsets of the training data with randomly chosen images. These mini-batches are used to train the network in iterations. When all mini-batches and thereby all images in the training dataset has been used for testing one testing epoch is done.
 
 % subsection the_training_data (end)
 
@@ -27,7 +31,10 @@ When training a network some different parameters sets the setting of the traini
 	\item The \textbf{number of epochs} in the training must be chosen. If the number is too low the loss function might not have converged when the training stops and if the number is too large the training period takes very long time without the network benefiting from it.
 	\item The \textbf{initial learning rate} is important for the training. If the value is too low the loss function might not converge because the leaning is too slow and if the value is too high it might result in the network not being able to hit the value where the loss function converge.
 	\item The \textbf{learning rate decay} parameter reduces the learning rate over time. Different types of learning rate decay methods exists e.g. step decay or 1/t decay.
-	\item The \textbf{regularization strength} helps the training from overfitting the network. This hyperparameter depends on the type of regularization. The parameter might be the regularization parameter in a L2 regularization or the drop out stregth in a drop outregularization.
+	\item The \textbf{regularization strength} helps the training from overfitting
+	the network. This hyperparameter depends on the type of regularization. The
+	parameter might be the regularization parameter in a L2 regularization or the
+	drop out stregth in a drop out regularization.
 \end{itemize} 
 
 % subsection training_hyperparameters (end)
