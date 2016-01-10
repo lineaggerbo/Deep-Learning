@@ -14,7 +14,18 @@ Convolutional layers are the core layers of a convolutional network. Regular
 neural networks scales improperly to an increasing input space because each
 neuron in one layer connects to all neurons in previous layers. The rationale behind introducing convolutional layers is to utilize the intrinsic spatially local correlation in natural images. This drastically reduces the amount of parameters in the network yet retaining great performance.
 
-Convolutonal layers output a 3D volume (width x height x depth) comprised of neurons and the input is also a 3D volume, e.g. (32 x 32 x 3) as in CIFAR10 images. The neurons in the output volume are connected only to a local region in the input volume. This connectivity is determined by the receptive field of a neuron. The receptive field $F$ is a hyperparameter that describes the size of a filter that is being slided along the spatial dimension the input volume during forward pass. For every filter movement the dot product between the filter entries and input are calculated thus producing a activation map. The output volume consists of stacked activation maps along the depth dimension. The intuition of how the convolutional layer works is that the filters are learnable parameter that will activate on specific type of features in a region of the inputs spatial dimension.
+Convolutonal layers output a 3D volume (width x height x depth) comprised of
+neurons and the input is also a 3D volume, e.g. (32 x 32 x 3) as in CIFAR10
+images. The neurons in the output volume are connected only to a local region in
+the input volume. This connectivity is determined by the receptive field of a
+neuron. The receptive field $F$ is a hyperparameter that describes the size of a
+filter that is being slided along the spatial dimension the input volume during
+forward pass. For every filter movement the dot product between the filter
+entries and input are calculated thus producing an activation map. The output
+volume consists of stacked activation maps along the depth dimension. The
+intuition of how the convolutional layer works is that the filters are learnable
+parameters that will activate on specific type of features in a region of the
+inputs spatial dimension.
 
 In addition to the receptive field $F$ three other hyperparameters exists in a convolutional layer. These are the number of filters $K$, the stride $S$ and the amount of zero padding $P$ and together they control the size of the output volume. 
 
@@ -44,9 +55,14 @@ given special attention later in this report.
 \subsection{ReLU layers} % (fold)
 \label{sub:relu_layers}
 
-Activation maps are often followed by an element-wise activation function. The Rectified Linear Unit (ReLU) is one of many activation function to choose among and are of special interest in this project. The ReLU activation function is the most common activation function in the lower layers of convolutional neural netorks. Other activation functions could be the Sigmoid or the Tanh activation functions.
+Activation maps are often followed by an element-wise activation function. The
+Rectified Linear Unit (ReLU) is one of many activation function to choose among
+and are of special interest in this project. The ReLU activation function is the
+most common activation function in the lower layers of convolutional neural
+networks. Other activation functions could be the Sigmoid or the Tanh activation
+functions.
 
-The ReLU differs from the other mentioned activations function in several ways.
+ReLU differs from the other mentioned activations function in several ways.
 First of all it converges faster which results in shorter training time.
 Secondly, the ReLU activation function do not saturate which avoids the problem
 about the gradient getting killed which would lead to the case where the network
@@ -68,13 +84,33 @@ are as follows: $f(x)=max(0,x)$ and is illustrated in the figure \ref{fig:relu}.
 \subsection{Pooling layers} % (fold)
 \label{sub:pool_layers}
 
-Pooling layers are common in-between successive convolutional layers. The primary purpose of introducing pooling layers is to reduce the spatial dimensions of a volume hence alleviating computations needed when training the network. This essentially means that the number of parameters in the network decreases. Thus pooling layers also contribute to control overfitting.
+Pooling layers are common in-between successive convolutional layers. The
+primary purpose of introducing pooling layers is to reduce the spatial
+dimensions of a volume hence alleviating computations needed when training the
+network. This essentially means that the number of parameters in the network
+decreases. Thus pooling layers also contribute to control overfitting.
 
-Parameter reduction is achieved by performing downsampling. This is done by applying filters along the spatial dimension of a volume effectively discarding many of the activations. The filter size, or spatial extend $F$, and stride $S$ are hyperparameters that has to be chosen at time the model is being constructed. As stated in \cite{cs231n} most commonly seen pooling layers are either non-overlapping with $F=2, S=2$ or overlapping with $F=3, S=2$.
+Parameter reduction is achieved by performing downsampling. This is done by
+applying filters along the spatial dimension of a volume effectively discarding
+many of the activations. The filter size, or spatial extend $F$, and stride $S$
+are hyperparameters that has to be chosen at time the model is being
+constructed. As stated in \cite{cs231n} most commonly seen pooling layers are
+either non-overlapping with $F=2, S=2$ or overlapping with $F=3, S=2$.
 
-Various downsampling strategies exists. The ones that are of interest in this project are max and average pooling. Historically average pooling has been used however recently max pooling has shown to perform better in practice. To understand the intuition of this one might consider this rough analogy: Say a city has four districts and you know whether or not it rains in each district. You are then asked if it rains in the city. You would most likely look at each district and say yes if it is raining in any of the districts. This process resembles max pooling. You would probably not count the raining cities and divide by 4 as average pooling proposes. 
+Various downsampling strategies exists. The ones that are of interest in this
+project are max and average pooling. Historically average pooling has been used
+however recently max pooling has shown to perform better in
+practice\cite{cs231n}. To understand the intuition of this one might consider this rough analogy: Say a
+city has four districts and you know whether or not it rains in each district.
+You are then asked if it rains in the city. You would most likely look at each
+district and say yes if it is raining in any of the districts. This process
+resembles max pooling. You would probably not count the raining cities and
+divide by 4 as average pooling proposes.
 
-We can transfer this analogy to our ConvNet. If a feature is detected in a small region it is less likely to appear multiple times, unless the image is kind of blurry or ghosty. Calculating the mean of this region would result in a value that is lower than the actual value. In that sense average pooling is not ideal.
+We can transfer this analogy to our ConvNet. If a feature is detected in a small
+region it is less likely to appear multiple times, unless the image is kind of
+blurry or ghosty. Calculating the mean of this region would result in a value
+that is lower than the actual value. In that sense average pooling is not ideal.
 
 % subsection pool_layers (end)
 \subsection{Fully-Connected Layers} % (fold)

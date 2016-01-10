@@ -8,7 +8,7 @@
 The network from the tutorial described earlier in this report is referred to
 as the initial network. The other networks which are tried out in this
 project is based on this network with some changes in the architecture. All
-networks used on this project are described in this section.
+networks used in this project are described in this section.
 
 \subsection{The initial CNN} % (fold)
 \label{sub:the_initial_network}
@@ -26,28 +26,28 @@ follows:
 	\item The third layer also consists of three parts. The convolutional part
 	and the ReLU is the same as in the earlier layers. But instead of using max
 	pooling, average pooling is used.
-	\item The fourth layer is a normal fully connected layer.
-	\item The fifth layer is also a normal fully connected layer.
+	\item The fourth layer is a fully connected layer.
+	\item The fifth layer is also a fully connected layer.
 	\item The sixth layer is a fully connected Softmax layer.
 \end{enumerate}
 For a detailed description of each type/part of the layers see
 \autoref{sec:convolutional_network_architecture}.
 
 The initial network architecture file called:
-\verb|cifar10__quick_traintest.prototx| it can be found in the examples folder
+\verb|cifar10_quick_traintest.prototxt| can be found in the examples folder
 under cifar10 in Caffe\cite{caffe}. This file has been used as a starting point
 for all our networks which are explained later in this section. 
 
-In order to running the network on a dataset it is also necessary to edit the
+In order to run the network on a dataset it is also necessary to edit the
 configuration file: \verb|cifar10_quick_solver.prototxt| which can be found in
 the same folder as the network architecture file. In this file a number of
 hyperparameters for the network are specified such as the number of iterations
-(epochs). The hyberparameters influence
-on the convolution networks are described in \autoref{sec:training}.
+(epochs). The hyperparameters influence on the convolution networks are
+described in \autoref{sec:training}.
 
 
-The only hyperparameter changed in this network is the number of
-iterations (epochs). 1 epoch is specified as when all images in a dataset has
+The only hyperparameter changed in the initial network is the number of
+iterations (epochs). One epoch is when all images in a dataset has
 been through the entire network once. In Caffe the number of epochs are
 specified as iterations where 4000 iterations is equivalent to 8 epochs (1
 epoch = 500 iterations).
@@ -74,14 +74,14 @@ Test result with 8000 iterations (16 epochs) achieved an accuracy on 0.7191.
 \label{sub:cnn}
 
 This network is based on the network in the previous
-\autoref{sub:the_initial_network} - The initial CNN. The network adds another
-convolution layer to the initial CNN as a new layer between layer 3 and 4. The
-new conv. layer has a kernel size of five, a stride of one and a padding of two.
+\autoref{sub:the_initial_network} - The initial CNN. The network introduces a
+new convolutional layer to the initial CNN between layer 3 and 4. This layer has
+a kernel size of five, a stride of one and a padding of two.
 The activation function for this conv. layer is also the Rectified Linear Unit
 (ReLU). 
 
-Our hypophysis was that by adding an additional convolution layer we could
-increase the performance as well as the traning time. This was based on the
+Our hypothesis is that by adding an additional convolutional layer we could
+increase the performance as well as the traning time. This is based on the
 article by Zeiler and Fergus\cite{ZeilerFergus} where the overall depth of the
 convolutional neural network is considered as an important factor for the
 performance of a CNN.
@@ -100,15 +100,15 @@ Test result with 4000 iterations (8 epochs) achieved an accuracy on	0.7186.
 \label{sub:alexNet}
 
 We have tried to mimic the architecture of AlexNet\cite{AlexNet} in order
-to test its performance on the CIFAR-10 dataset. The original AlexNet consists of 8
-layers and are using delineation of responsibilities between two GPUs. Since we
-did not have multiple GPUs available we focused on designing the network for a
-single GPU/CPU as in \cite{ZeilerFergus}. 
+to test its performance on the CIFAR-10 dataset. The original AlexNet is a model
+consisting of 8 layers which are split across two GPUs. Since we
+do not have multiple GPUs available we have focused on designing the network for
+a single GPU/CPU as in \cite{ZeilerFergus}. 
 
-AlexNet was trained, validated and tested on the ImageNet dataset which contain
-much larger images than the CIFAR-10 dataset. This meant that we had to change
-the kernel size, the stride and the pooling in order for our network to be
-compatible with the CIFAR-10 images. 
+AlexNet is trained, validated and tested on the ImageNet dataset which contains
+much larger images than the CIFAR-10 dataset. This mean that the kernel size,
+the stride and the pooling is changed in order for our network to be compatible
+with the CIFAR-10 images.
 
 
 Our AlexNet configuration for Caffe is a 8 layer network with five convolutional
@@ -134,18 +134,18 @@ For a detailed description of each type/part of the layers see
 
 The differences from the original AlexNet is the change in kernel size for both
 convolution and for max pooling which is scaled down to fit the smaller
-images in CIFAR-10. Also the stride is minimized to one in the convolutions but
+images in CIFAR-10. Also the stride is lowered to one in the convolutions but
 not in the max pooling. Another argument for changing the value to smaller
-numbers besides fitting the network to the dataset is as explained in
+numbers besides fitting the network to the dataset is equivalent to 
 \cite{ZeilerFergus} where Zeiler and Fergus conclude that ``the overall depth of
 the model is important for obtaining good performance''. Zeiler and
-Fergus\cite{ZeilerFergus} reduce the size of the kernel size from 11 to 7 and
+Fergus\cite{ZeilerFergus} reduce the size of the kernel from 11 to 7 and
 the stride from 4 to 2 in the first layer and their reduction in the first layer
-allows the network to retain more information which improved their overall
+allows the network to retain more information which improves their overall
 performance. 
 
 
-Our hypophysis was that by introducing more layers into the network compared to
+Our hypothesis is that by introducing more layers into the network compared to
 the initial network and by using principles from Zeiler and
 Fergus\cite{ZeilerFergus} this would improve the performance
 and thereby increase the accuracy.

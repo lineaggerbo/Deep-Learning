@@ -5,18 +5,33 @@
 \section{Caffe} % (fold)
 \label{sec:caffe}
 
-Convolutional Architecture for Fast Feature Embedding (Caffe) is a public available framework which makes it possible to design, train and use a convolutional network in a rather simple way. The source code is available online and the team behind the framework encourage other people to note or change any errors which they might find. The framework allows you to choose to use either the CPU or the GPU for calculations. In this project the CPU is used.
+Convolutional Architecture for Fast Feature Embedding (Caffe) is a public
+available framework which makes it possible to design, train and use a
+convolutional network in a rather simple way. The source code is available
+online and the team behind the framework encourage other people to note or
+change any errors which they might find. The framework allows you to choose to
+use either the CPU or the GPU for calculations. In this project the CPU is used.
 
-In order to use Caffe for image classification three files are needed - a .prototxt file, a \_solver.prototxt file and a .sh file. These three files together defines the architecture of the network, the hyperparameters and the training and testing strategy.
+In order to use Caffe for image classification three files are needed - a
+.prototxt file, a \_solver.prototxt file and a shell script file for invoking
+the execution.
+These three files together defines the architecture of the network, the
+hyperparameters and the training and testing strategy.
 
-The .prototxt file defines the architecture of the model e.g. the number and types of layers. An example of a defined layer is shown in \autoref{lst:conv1layer}. The layer exists of three layers - the convolutional layer, the pooling layer and the relu layer. The properties of the different type of layers is described in \autoref{sec:convolutional_network_architecture}.
+The .prototxt file defines the architecture of the model e.g. the number and
+types of layers. An example of a defined layer is shown in
+\autoref{lst:conv1layer}. The layer exists of three layers - the convolutional
+layer, the pooling layer and the relu layer. The properties of the different
+type of layers is described in \autoref{sec:convolutional_network_architecture}.
 
-The three layers are defined with a name, a type, the input (bottom) and the output (top). Some layers has a number of parameters (convolution\_param and pooling\_param) which sets some hyperparameters for the layer.
+The three layers are defined with a name, a type, the input (bottom) and the
+output (top). Some layers has a number of parameters (convolution\_param and
+pooling\_param) which sets some hyperparameters for the layer.
 
-\begin{lstlisting}[caption = A code snippet from the file  cifar10\_quick\_train\_test.prototxt from the Cifar-10 tutorial provided by the framework. This code snippet defines the first convolutional layer in the network., label={lst:conv1layer}]
-layer {
-  name: "conv1"
-  type: "Convolution"
+\begin{lstlisting}[caption = A code snippet from the file
+cifar10\_quick\_train\_test.prototxt from the Cifar-10 tutorial provided by the
+framework. This code snippet defines the first convolutional layer in the
+network., label={lst:conv1layer}] layer { name: "conv1" type: "Convolution"
   bottom: "data"
   top: "conv1"
   param {
@@ -90,7 +105,8 @@ snapshot_prefix: "examples/cifar10/cifar10_quick"
 solver_mode: CPU
 \end{lstlisting}
 
-The .sh file is the executable file which is run to start training. This file contains a few lines which yields which \_solver.prototxt file should be used to train. An example of such a file can be seen in \autoref{lst:train_quick_file}.
+The shell script is the executable file which is run to start training. This
+file contains a few lines which yields which \_solver.prototxt file should be used to train. An example of such a file can be seen in \autoref{lst:train_quick_file}.
 
 \begin{lstlisting}[caption = The code from the train\_quick.sh file from  the Cifar-10 tutorial provided by the framework. This file is executable and yields which \_solver.prototxt file to us to start training., label={lst:train_quick_file}]
 #!/usr/bin/env sh
