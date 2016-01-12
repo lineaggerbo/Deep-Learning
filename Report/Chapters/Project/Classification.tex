@@ -5,7 +5,8 @@
 \section{Classification} % (fold)
 \label{sec:classification}
 
-Hence the original CNN performed the best it will be the resulting caffemodel which will be used for classification of three images in this section.
+Hence the initial CNN performed the best it will be the resulting caffemodel
+which will be used for classification of three images in this section.
 
 The three images which are being classified are illustrated in \autoref{fig:images} and has the corresponding true classes; (a) bird, (b) cat, and (c) truck.
 
@@ -20,8 +21,8 @@ The python script used for classification of the images is listed in \autoref{ls
 
 The script then forward passes the image in the network to obtain the classification result. The top 5 labels for the classified image in then printed together with the probability of the images belonging to that label.
 
-\begin{lstlisting}[caption = The python script used for classification with the caffemodel from the original CNN., label={lst:script}]
-import numpy as np
+\begin{lstlisting}[caption = The python script used for classification with the
+caffemodel from the initial CNN., label={lst:script}] import numpy as np
 import sys
 import caffe
 
@@ -69,12 +70,16 @@ for t in top_5:
 \subsection{Results} % (fold)
 \label{sub:results}
 
-The classification result is illustrated in \autoref{fig:images-result}. The class which the image most possibly should be assigned to is the first label. The illustration shows that two out of three images are classified correctly; the bird and the truck. The cat is classified as a ship which is not true class for it.
+The classification result is illustrated in \autoref{fig:images-result}. The
+class which the image most possibly should be assigned to is the first label.
+The illustration shows that two out of three images are classified correctly;
+the bird and the truck. The cat is classified as a ship which is not true class for it.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\columnwidth]{Img/classification-images-with-labels.pdf}
-  \caption{Result of the classification. The class which the image most possibly should be assigned to is listed af the first label.}
+  \caption{Result of the classification. The class which the image most possibly
+  should be assigned to is listed af the first label.}
   \label{fig:images-result}
 \end{figure}
 
