@@ -5,19 +5,14 @@
 \section{Discussion} % (fold)
 \label{sec:discussion}
 
-We have experimented with different configurations in the Caffe framework for
-convolutional neural networks as explained in \autoref{sec:networks}. These
-experiments resulted in three different networks: The initial CNN, The CNN with
-additional convolution layer and The customized AlexNet. Our hypothesis for our
-networks were to improve the performance by adding layers and mimicking
-a the architecture of a well known CNN. Despite our effort to improve our
+We have experimented with different configurations in the Caffe framework for convolutional neural networks as explained in \autoref{sec:networks}. These experiments resulted in three different networks: The initial CNN, The CNN with additional convolution layer and The customized AlexNet. Our hypothesis for our networks were to improve the performance by adding convolutional layers and mimicking the architecture of a well known CNN. Despite our effort to improve our
 networks - based on literature from cs231n \cite{cs231n}, the AlexNet
-article\cite{AlexNet} and the article by Zeiler and Fergus \cite{ZeilerFergus} -
-the accuracy for the initial CNN on 0.7227 using 4000 iterations is the best result that we could obtain in the experiments.
+article\cite{AlexNet} and the article by Zeiler and Fergus \cite{ZeilerFergus} - the accuracy for the initial CNN on 0.7227 using 4000 iterations is the best result that we could obtain in the experiments.
 
+One of the reasons why our customized AlexNet did not perform as intented could be our choise of lowering the different parameters in order to be able to use the AlexNet architecture on the CIFAR-10 dataset.
 
-One of the reasons why our customized AlexNet did not perform as intented could
-be our choise of lowering the different parameters in order to be able to use
-the AlexNet architecture on the CIFAR-10 dataset. 
+Three classifications using the best performing CNN has been performed. The result from this was two out of three correct classifications which is not far from the result obtained when testing the performance.
+
+The results shown in \autoref{fig:images-result} show a difference in the two correct classification. The classification of the truck is very confident with the probability of $~99.6\%$ of being a truck. The classification of the bird on the other hand is not as confident with the probability of $47.6\%$ of being a bird and $33.2\%$ of being an airplane.
 
 % section discussion (end)

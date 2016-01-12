@@ -158,6 +158,38 @@ dataset is as follows:
 
 Test result with 8000 iterations (16 epochs) achieved an accuracy on 0.6992. 
 
-
 % subsection another_network (end)
+
+\subsection{Results} % (fold)
+\label{sub:results}
+
+The results from our three different CNNs are shown in
+\autoref{table:table_results} by the means of accuracy on the test dataset from
+CIFAR-10. 
+
+The accuracy for the initial CNN is the best result that we obtained
+compared to our CNN with an additional convolution layer and our customized
+AlexNet. This conflicts with our hypothesis and will be further discussed in
+\autoref{sec:discussion}.
+
+\vspace{3 mm} % add some space above the table
+\begin{table}[H]
+\centering
+\sffamily
+\small
+\begin{tabular}{l | c r}
+\toprule
+Name 					& 4000 iterations		& 8000 iterations	\\
+\midrule 
+The initial CNN 		& 0.7227				& 0.7191			\\ 
+CNN + conv. layer		& 0.7186				& --				\\ 
+Customized AlexNet		& -- 					& 0.6992	 		\\ 
+\bottomrule 
+\end{tabular}
+\caption[Short caption]{Results - The accuracy of our CNN's}
+\label{table:table_results}
+\end{table}
+
+% subsection results (end)
+
 % section the_networks (end)
